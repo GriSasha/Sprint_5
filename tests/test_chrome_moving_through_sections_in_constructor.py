@@ -2,72 +2,74 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-def test_click_to_word_souses_moves_to_section_souses(browser):
-    
-    browser.get("https://stellarburgers.education-services.ru/")
+class TestStellarBurgersMovingThroughSectionsInConstructor:
 
-    browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
+    def test_click_to_word_souses_moves_to_section_souses(self, browser):
+        
+        browser.get("https://stellarburgers.education-services.ru/")
 
-    result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Соусы']]")))
+        browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
 
-    assert result.text == 'Соусы'
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Соусы']]")))
 
-def test_scroll_from_section_bread_moves_to_section_souses(browser):
-     
-     browser.get("https://stellarburgers.education-services.ru/")
+        assert result.text == 'Соусы'
 
-     element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Соусы']")
-     
-     browser.execute_script("arguments[0].scrollIntoView();", element)
+    def test_scroll_from_section_bread_moves_to_section_souses(self, browser):
+        
+        browser.get("https://stellarburgers.education-services.ru/")
 
-     result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Соусы']]")))
+        element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Соусы']")
+        
+        browser.execute_script("arguments[0].scrollIntoView();", element)
 
-     assert result.text == 'Соусы'
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Соусы']]")))
 
-def test_click_to_word_bread_moves_to_section_bread(browser):
-    
-    browser.get("https://stellarburgers.education-services.ru/")
+        assert result.text == 'Соусы'
 
-    browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
-    browser.find_element(By. XPATH, "//span[text()='Булки']").click()
+    def test_click_to_word_bread_moves_to_section_bread(self, browser):
+        
+        browser.get("https://stellarburgers.education-services.ru/")
 
-    result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Булки']]")))
+        browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
+        browser.find_element(By. XPATH, "//span[text()='Булки']").click()
 
-    assert result.text == 'Булки'
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Булки']]")))
 
-def test_scroll_from_section_souses_moves_to_section_bread(browser):
-     
-     browser.get("https://stellarburgers.education-services.ru/")
+        assert result.text == 'Булки'
 
-     browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
+    def test_scroll_from_section_souses_moves_to_section_bread(self, browser):
+        
+        browser.get("https://stellarburgers.education-services.ru/")
 
-     element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Булки']")
-     browser.execute_script("arguments[0].scrollIntoView();", element)
+        browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
 
-     result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Булки']]")))
+        element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Булки']")
+        browser.execute_script("arguments[0].scrollIntoView();", element)
 
-     assert result.text == 'Булки'
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Булки']]")))
 
-def test_click_to_word_fillings_moves_to_section_fillings(browser):
-    
-    browser.get("https://stellarburgers.education-services.ru/")
+        assert result.text == 'Булки'
 
-    browser.find_element(By. XPATH, "//span[text()='Начинки']").click()
+    def test_click_to_word_fillings_moves_to_section_fillings(self, browser):
+        
+        browser.get("https://stellarburgers.education-services.ru/")
 
-    result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Начинки']]")))
+        browser.find_element(By. XPATH, "//span[text()='Начинки']").click()
 
-    assert result.text == 'Начинки'
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Начинки']]")))
 
-def test_scroll_from_section_bread_moves_to_section_fillings(browser):
-     
-     browser.get("https://stellarburgers.education-services.ru/")
+        assert result.text == 'Начинки'
 
-    
-     element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Начинки']")
-     browser.execute_script("arguments[0].scrollIntoView();", element)
+    def test_scroll_from_section_bread_moves_to_section_fillings(self, browser):
+        
+        browser.get("https://stellarburgers.education-services.ru/")
 
-     result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Начинки']]")))
+        
+        element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Начинки']")
+        browser.execute_script("arguments[0].scrollIntoView();", element)
 
-     assert result.text == 'Начинки'
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Начинки']]")))
 
-     
+        assert result.text == 'Начинки'
+
+        
