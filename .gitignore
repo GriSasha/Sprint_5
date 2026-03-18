@@ -4,3 +4,4 @@ tests/test_firefox_login_to_account.py
 tests/test_firefox_moving_from_personal_account_to_constructor.py
 tests/test_firefox_moving_through_sections_in_constructor.py
 tests/test_firefox_registration.py
+__pycache__/*
