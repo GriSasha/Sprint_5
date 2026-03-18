@@ -1,7 +1,7 @@
 ﻿from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-
+import locators
 import urls
 
 class TestStellarBurgersRegistration:
@@ -10,31 +10,31 @@ class TestStellarBurgersRegistration:
         
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By.XPATH, "//a[@href='/account']").click() 
-        browser.find_element(By.XPATH, "//a[@href='/register']").click() 
-        browser.find_element(By.XPATH, "//div[label[text()='Имя']]//input[@type='text']").send_keys(login) 
-        browser.find_element(By.XPATH, "//div[label[text()='Email']]//input[@type='text']").send_keys(login) 
-        browser.find_element(By.XPATH, "//div[label[text()='Пароль']]//input[@type='password']").send_keys(password) 
-        browser.find_element(By.XPATH, ".//button[text()='Зарегистрироваться']").click() 
+        browser.find_element(By.XPATH, locators.personal_account_button).click() 
+        browser.find_element(By.XPATH, locators.registration_link).click() 
+        browser.find_element(By.XPATH, locators.name_field).send_keys(login) 
+        browser.find_element(By.XPATH, locators.email_field).send_keys(login) 
+        browser.find_element(By.XPATH, locators.password_field).send_keys(password) 
+        browser.find_element(By.XPATH, locators.registration_button).click() 
 
 
-        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//main/div/h2[text()='Вход']"))) 
+        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.login_header))) 
 
-        assert browser.find_element(By.XPATH, "//main/div/h2[text()='Вход']").text == 'Вход'
+        assert browser.find_element(By.XPATH, locators.login_header).text == 'Вход'
 
 
     def test_registration_with_invalid_password(self, browser, login, bad_password):
     
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By.XPATH, "//a[@href='/account']").click()
-        browser.find_element(By.XPATH, "//a[@href='/register']").click()
-        browser.find_element(By.XPATH, "//div[label[text()='Имя']]//input[@type='text']").send_keys(login)
-        browser.find_element(By.XPATH, "//div[label[text()='Email']]//input[@type='text']").send_keys(login)
-        browser.find_element(By.XPATH, "//div[label[text()='Пароль']]//input[@type='password']").send_keys(bad_password)
-        browser.find_element(By.XPATH, ".//button[text()='Зарегистрироваться']").click()
+        browser.find_element(By.XPATH, locators.personal_account_button).click()
+        browser.find_element(By.XPATH, locators.registration_link).click()
+        browser.find_element(By.XPATH, locators.name_field).send_keys(login)
+        browser.find_element(By.XPATH, locators.email_field).send_keys(login)
+        browser.find_element(By.XPATH, locators.password_field).send_keys(bad_password)
+        browser.find_element(By.XPATH, locators.registration_button).click()
 
-        error = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//fieldset/div/p")))
+        error = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.validation_error)))
 
         assert error.text == 'Некорректный пароль'
 

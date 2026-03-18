@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import urls
+import locators
 
 class TestStellarBurgersMovingToConstructor:
 
@@ -9,20 +10,20 @@ class TestStellarBurgersMovingToConstructor:
         
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By.XPATH, ".//button[text()='Войти в аккаунт']").click() 
-        browser.find_element(By.XPATH, "//div[label[text()='Email']]//input[@type='text']").send_keys(reg_login) 
-        browser.find_element(By.XPATH, "//div[label[text()='Пароль']]//input[@type='password']").send_keys(reg_password) 
-        browser.find_element(By.XPATH, ".//button[text()='Войти']").click() 
+        browser.find_element(By.XPATH, locators.login_account_button).click() 
+        browser.find_element(By.XPATH, locators.email_field).send_keys(reg_login) 
+        browser.find_element(By.XPATH, locators.password_field).send_keys(reg_password) 
+        browser.find_element(By.XPATH, locators.login_button).click() 
 
 
-        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//button[text()='Оформить заказ']"))) 
+        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.order_button))) 
 
-        browser.find_element(By.XPATH, "//a[@href='/account']").click() 
+        browser.find_element(By.XPATH, locators.personal_account_button).click() 
 
-        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//a[@href='/account/profile']"))) 
+        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.profile_button))) 
 
-        browser.find_element(By.XPATH, "//a[.//p[normalize-space()='Конструктор']]").click()
-        res = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div/div/main/section[1]/h1"))) 
+        browser.find_element(By.XPATH, locators.constructor_button).click()
+        res = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.create_burger_header))) 
 
         assert res.text == 'Соберите бургер'
 
@@ -31,20 +32,20 @@ class TestStellarBurgersMovingToConstructor:
         
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By.XPATH, ".//button[text()='Войти в аккаунт']").click() 
-        browser.find_element(By.XPATH, "//div[label[text()='Email']]//input[@type='text']").send_keys(reg_login) 
-        browser.find_element(By.XPATH, "//div[label[text()='Пароль']]//input[@type='password']").send_keys(reg_password) 
-        browser.find_element(By.XPATH, ".//button[text()='Войти']").click() 
+        browser.find_element(By.XPATH, locators.login_account_button).click() 
+        browser.find_element(By.XPATH, locators.email_field).send_keys(reg_login) 
+        browser.find_element(By.XPATH, locators.password_field).send_keys(reg_password) 
+        browser.find_element(By.XPATH, locators.login_button).click() 
 
 
-        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, ".//button[text()='Оформить заказ']"))) 
+        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.order_button))) 
 
-        browser.find_element(By.XPATH, "//a[@href='/account']").click() 
+        browser.find_element(By.XPATH, locators.personal_account_button).click() 
 
-        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//a[@href='/account/profile']"))) 
+        WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.profile_button))) 
 
-        browser.find_element(By.XPATH, "//*[@id='root']/div/header/nav/div").click() 
-        res = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div/div/main/section[1]/h1")))
+        browser.find_element(By.XPATH, locators.stellar_burgers_logo).click() 
+        res = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.create_burger_header)))
 
         assert res.text == 'Соберите бургер'
 

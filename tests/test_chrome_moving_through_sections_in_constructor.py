@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import urls
+import locators
 
 class TestStellarBurgersMovingThroughSectionsInConstructor:
 
@@ -9,9 +10,9 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
         
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
+        browser.find_element(By. XPATH, locators.sauses_button).click()
 
-        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Соусы']]")))
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.selected_sauses_button)))
 
         assert result.text == 'Соусы'
 
@@ -19,11 +20,11 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
         
         browser.get(urls.url_stellar_burgers)
 
-        element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Соусы']")
+        element = browser.find_element(By.XPATH, locators.sauses_header)
         
         browser.execute_script("arguments[0].scrollIntoView();", element)
 
-        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Соусы']]")))
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.selected_sauses_button)))
 
         assert result.text == 'Соусы'
 
@@ -31,10 +32,10 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
         
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
-        browser.find_element(By. XPATH, "//span[text()='Булки']").click()
+        browser.find_element(By. XPATH, locators.sauses_button).click()
+        browser.find_element(By. XPATH, locators.bread_button).click()
 
-        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Булки']]")))
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.selected_bread_button)))
 
         assert result.text == 'Булки'
 
@@ -42,12 +43,12 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
         
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
+        browser.find_element(By. XPATH, locators.sauses_button).click()
 
-        element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Булки']")
+        element = browser.find_element(By.XPATH, locators.bread_header)
         browser.execute_script("arguments[0].scrollIntoView();", element)
 
-        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Булки']]")))
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.selected_bread_button)))
 
         assert result.text == 'Булки'
 
@@ -55,9 +56,9 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
         
         browser.get(urls.url_stellar_burgers)
 
-        browser.find_element(By. XPATH, "//span[text()='Начинки']").click()
+        browser.find_element(By. XPATH, locators.fillings_button).click()
 
-        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Начинки']]")))
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.selected_fillings_button)))
 
         assert result.text == 'Начинки'
 
@@ -66,10 +67,10 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
         browser.get(urls.url_stellar_burgers)
 
         
-        element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Начинки']")
+        element = browser.find_element(By.XPATH, locators.fillings_header)
         browser.execute_script("arguments[0].scrollIntoView();", element)
 
-        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, "//div[contains(@class, 'tab_tab_type_current') and .//span[normalize-space()='Начинки']]")))
+        result = WebDriverWait(browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, locators.selected_fillings_button)))
 
         assert result.text == 'Начинки'
 
