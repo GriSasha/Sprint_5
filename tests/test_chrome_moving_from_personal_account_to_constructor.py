@@ -3,16 +3,17 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import urls
 import locators
+import data
 
 class TestStellarBurgersMovingToConstructor:
 
-    def test_moving_from_personal_account_to_constructor_by_button_constructor(self, browser, reg_login, reg_password):
+    def test_moving_from_personal_account_to_constructor_by_button_constructor(self, browser):
         
         browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, locators.login_account_button).click() 
-        browser.find_element(By.XPATH, locators.email_field).send_keys(reg_login) 
-        browser.find_element(By.XPATH, locators.password_field).send_keys(reg_password) 
+        browser.find_element(By.XPATH, locators.email_field).send_keys(data.reg_login) 
+        browser.find_element(By.XPATH, locators.password_field).send_keys(data.reg_password) 
         browser.find_element(By.XPATH, locators.login_button).click() 
 
 
@@ -28,13 +29,13 @@ class TestStellarBurgersMovingToConstructor:
         assert res.text == 'Соберите бургер'
 
 
-    def test_moving_from_personal_account_to_constructor_by_logo_stellar_burgers(self, browser, reg_login, reg_password):
+    def test_moving_from_personal_account_to_constructor_by_logo_stellar_burgers(self, browser):
         
         browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, locators.login_account_button).click() 
-        browser.find_element(By.XPATH, locators.email_field).send_keys(reg_login) 
-        browser.find_element(By.XPATH, locators.password_field).send_keys(reg_password) 
+        browser.find_element(By.XPATH, locators.email_field).send_keys(data.reg_login) 
+        browser.find_element(By.XPATH, locators.password_field).send_keys(data.reg_password) 
         browser.find_element(By.XPATH, locators.login_button).click() 
 
 

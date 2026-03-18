@@ -31,15 +31,4 @@ def bad_password():
     number = random.randint(100, 999)
     return f"P{number}"
 
-@pytest.fixture
-def reg_login():
-    reg_login = "san_41@mail.ru"
-    return reg_login
-
-@pytest.fixture
-def reg_password():
-    reg_password = "123456"
-    return reg_password
-
-
 
