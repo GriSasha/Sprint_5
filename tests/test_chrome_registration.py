@@ -2,11 +2,13 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+import urls
+
 class TestStellarBurgersRegistration:
 
     def test_registration_with_valid_name_email_password(self, browser, login, password):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, "//a[@href='/account']").click() 
         browser.find_element(By.XPATH, "//a[@href='/register']").click() 
@@ -23,7 +25,7 @@ class TestStellarBurgersRegistration:
 
     def test_registration_with_invalid_password(self, browser, login, bad_password):
     
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, "//a[@href='/account']").click()
         browser.find_element(By.XPATH, "//a[@href='/register']").click()
@@ -36,4 +38,3 @@ class TestStellarBurgersRegistration:
 
         assert error.text == 'Некорректный пароль'
 
-        

@@ -1,12 +1,14 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+import urls
+
 
 class TestStellarBurgersLogin:
 
     def test_login_on_the_main_page(self, browser, reg_login, reg_password):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, ".//button[text()='Войти в аккаунт']").click() 
         browser.find_element(By.XPATH, "//div[label[text()='Email']]//input[@type='text']").send_keys(reg_login) 
@@ -20,7 +22,7 @@ class TestStellarBurgersLogin:
 
     def test_login_by_personal_account_button(self, browser, reg_login, reg_password):
 
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, "//a[@href='/account']").click() 
         browser.find_element(By.XPATH, "//div[label[text()='Email']]//input[@type='text']").send_keys(reg_login) 
@@ -34,7 +36,7 @@ class TestStellarBurgersLogin:
 
     def test_login_by_registration_form(self, browser, reg_login, reg_password):
 
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, "//a[@href='/account']").click() 
         browser.find_element(By.XPATH, "//a[@href='/register']").click() 
@@ -50,7 +52,7 @@ class TestStellarBurgersLogin:
 
     def test_login_by_password_recovery_form(self, browser, reg_login, reg_password):
     
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, "//a[@href='/account']").click() 
         browser.find_element(By.XPATH, "//a[@href='/forgot-password']").click() 

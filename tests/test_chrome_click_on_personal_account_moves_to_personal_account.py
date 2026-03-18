@@ -1,12 +1,13 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+import urls
 
 class TestStellarBurgersMovingToPersonalAcc:
 
     def test_login_on_the_main_page(self, browser, reg_login, reg_password):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By.XPATH, ".//button[text()='Войти в аккаунт']").click() 
         browser.find_element(By.XPATH, "//div[label[text()='Email']]//input[@type='text']").send_keys(reg_login) 

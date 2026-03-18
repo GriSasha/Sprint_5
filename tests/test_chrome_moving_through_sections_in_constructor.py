@@ -1,12 +1,13 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+import urls
 
 class TestStellarBurgersMovingThroughSectionsInConstructor:
 
     def test_click_to_word_souses_moves_to_section_souses(self, browser):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
 
@@ -16,7 +17,7 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
 
     def test_scroll_from_section_bread_moves_to_section_souses(self, browser):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Соусы']")
         
@@ -28,7 +29,7 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
 
     def test_click_to_word_bread_moves_to_section_bread(self, browser):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
         browser.find_element(By. XPATH, "//span[text()='Булки']").click()
@@ -39,7 +40,7 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
 
     def test_scroll_from_section_souses_moves_to_section_bread(self, browser):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By. XPATH, "//span[text()='Соусы']").click()
 
@@ -52,7 +53,7 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
 
     def test_click_to_word_fillings_moves_to_section_fillings(self, browser):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         browser.find_element(By. XPATH, "//span[text()='Начинки']").click()
 
@@ -62,7 +63,7 @@ class TestStellarBurgersMovingThroughSectionsInConstructor:
 
     def test_scroll_from_section_bread_moves_to_section_fillings(self, browser):
         
-        browser.get("https://stellarburgers.education-services.ru/")
+        browser.get(urls.url_stellar_burgers)
 
         
         element = browser.find_element(By.XPATH, "//section//h2[normalize-space()='Начинки']")

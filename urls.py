@@ -1,0 +1,1 @@
+url_stellar_burgers = 'https://stellarburgers.education-services.ru/'
